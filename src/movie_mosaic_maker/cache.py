@@ -120,6 +120,10 @@ class FrameCache:
         size, mtime = self._stat(path)
         return _source_id(path, size, mtime)
 
+    def source_id_for(self, path: Path) -> str:
+        """Public accessor for a file's current stable content id (see `_source_id`)."""
+        return self._source_id_for_file(path)
+
     # -- videos --------------------------------------------------------
 
     def get_video_info(self, path: Path) -> VideoInfo | None:
