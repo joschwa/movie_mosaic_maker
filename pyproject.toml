@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "movie-mosaic-maker"
+version = "0.1.0"
+description = "Command line program to turn movies (and image sets) into photomosaics"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "opencv-python-headless",
+  "Pillow",
+  "scipy",
+  "click",
+  "platformdirs",
+  "tqdm",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "hypothesis",
+]
+
+[project.scripts]
+movie-mosaic-maker = "movie_mosaic_maker.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/movie_mosaic_maker"]
